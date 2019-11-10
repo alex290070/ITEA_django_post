@@ -1,0 +1,29 @@
+{% load static %}
+{% load custom_filters %}
+
+<div class="container">
+  <div class="row">
+    {% for comment in comment_list %}
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">{{ comment.title }}</h4>
+            <h6 class="card-subtitle mb-2 text-muted"><a href="{{ comments.post_absolute_url }}">{{ comments.posts|title }}</a></h6>
+            <p class="card-text">{{ comments.short_description|safe }}</p>
+          </div>
+          <div class="card-footer justify-content-between align-items-center">
+            <div class="d-flex flex-row justify-content-between">
+              <div class="price text-success"><h5 class="mt-4">{{ comments.author }} грн</h5></div>
+            </div>
+            <div class="form-group">
+              <a href="#" class="btn btn-primary mt-3">Subscribe</a>
+              <a href="#" class="btn btn-warning mt-3">Unsubscribe</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      Комментов нет
+    {% endfor %}
+  </div>
+</div>

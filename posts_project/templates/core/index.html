@@ -1,0 +1,14 @@
+{% block content %}
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Добро пожаловать на наш форум.</h1>
+      <p class="lead">Самые интересные посты и комменты, только у нас</p>
+    </div>
+  </div>
+
+  {% include 'core/components/comment_list.html' %}
+  <div class="container text-center">
+    <a href="{% url 'core:component-list' %}" class="btn btn-danger mt-3">Показать все комменты</a>
+  </div>
+{% endblock content %}
