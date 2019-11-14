@@ -10,7 +10,8 @@ from core.views import (
 app_name = 'core'
 
 urlpatterns = [
-    path('', index_view, name='index'),
+    #path('', index_view, name='index'),
+    path('', post_list_view, name='post-list'),
     path('comments/', comment_list_view, name='comment-list'),
     path('comments/<slug>/<pk>/', comment_detail_view, name='comment'),
     path('posts/', post_list_view, name='post-list'),

@@ -1,0 +1,18 @@
+{% block content %}
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Comments</h1>
+    </div>
+  </div>
+
+  <form method="GET" class="container">
+    <select class="form-select" name="sort">
+      <option value="title" {% ifequal request.GET.sort "title" %}selected{% endifequal %}>По названию</option>
+      <option value="author" {% ifequal request.GET.sort "author" %}selected{% endifequal %}>По автору</option>
+    </select>
+    <button type="submit">Сортировать</button>
+  </form>
+
+  {% include 'core/components/comment_list.html' %}
+{% endblock content %}

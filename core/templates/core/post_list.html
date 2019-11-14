@@ -1,0 +1,26 @@
+{% load static %}
+{% block content %}
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Topic of Posts</h1>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    {% for post in post_list %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+     <div class="card-body">
+      <a href="{{ post.url }}">{{ post.title }}</a>
+      <p class="card-text">{{ post.date }}</p>
+      <p class="card-text">{{ post.short_description |safe}}</p>
+     </div>
+      {% if post.imageUrl %}
+        <a href="{{ post.get_absolute_url }}"><img class="card-img" height="300" src="{{ post.imageUrl }}" alt="Vans"></a>
+      {% else %}
+        <a href="{{ post.get_absolute_url }}"><img class="card-img" height="300" src="{% static 'img/no_img.png' %}" alt="Vans"></a>
+      {% endif %}
+      <span class="badge badge-primary badge-pill">Count of comment:  {{ post.count }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
