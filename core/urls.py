@@ -5,6 +5,7 @@ from core.views import (
     comment_detail_view,
     post_list_view,
     post_detail_view,
+    ContactUsFormView,
 )
 
 app_name = 'core'
@@ -16,5 +17,6 @@ urlpatterns = [
     path('comments/<slug>/<pk>/', comment_detail_view, name='comment'),
     path('posts/', post_list_view, name='post-list'),
     path('posts/<slug>/', post_detail_view, name='post'),
+    path('contactus/', ContactUsFormView.as_view(), name='contactus'),
     # re_path(r'^posts/(?P<slug>[\w-_]+)/$', func, name='post')
 ]

@@ -1,0 +1,45 @@
+{% load static %}
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'core:index' %}"><img src="{% static 'img/logo.png' %}" width="50" /></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navb">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'core:index' %}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'core:category-list' %}">Категории</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Личный кабинет</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="{% url 'core:product-list' %}">
+        <input class="form-control mr-sm-2" name="search" type="text" placeholder="Поиск" required>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Поиск</button>
+      </form>
+      <div class="my-2 my-lg-0">
+        <a href="{% url 'order:cart' %}">
+          <img src="{% if request.session.cart %}
+            {% static 'img/cart.png' %}{% else %}
+            {% static 'img/cart_empty.png' %}{% endif %}" width="50" />
+        </a>
+      </div>
+      {% if user.is_authenticated %}
+      <a class="btn btn-primary" href="{% url 'users:profile' %}">ЛК</a>
+      <a class="btn btn-primary" href="{% url 'users:logout' %}">Выйти</a>
+      {% else %}
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">Войти</button>
+      {% endif %}
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register"></button> -->
+    </div>
+  </nav>
+</header>

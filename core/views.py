@@ -2,6 +2,9 @@ from django.shortcuts import render
 from core.models import Post, Comment
 from django.shortcuts import get_object_or_404
 from django.utils.formats import date_format
+from django.urls import reverse, reverse_lazy
+from core.forms import ContactUsForm
+from django.views.generic import View, TemplateView, ListView, DetailView, FormView
 
 
 def post_list_view(request):
@@ -31,7 +34,7 @@ def post_detail_view(request, slug):
     if post:
         ctx['post'] = post.title.title()
         ctx['comment_list'] = post.comment_set.all()
-    return render(request, 'core/post.html', ctx)
+    return render(request, 'core/comment_list.html', ctx)
 
 def index_view(request):
     ctx = {}
@@ -44,3 +47,12 @@ def comment_detail_view(request, pk, slug):
     if comment:
         ctx['comment'] = comment
     return render(request, 'core/comment.html', ctx)
+
+class ContactUsFormView(FormView):
+    template_name = 'contact_us.html'
+    form_class = ContactUsForm
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

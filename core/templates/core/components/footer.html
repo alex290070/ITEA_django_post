@@ -1,0 +1,18 @@
+{% load custom_filters %}
+
+{% comment %} <footer class="footer {{ fixed }} py-3 bg-dark">
+  <div class="container-fluid row text-center text-white">
+    {% get_contact as contact %}
+    <div class="col"><small>{{ contact.address }}</small></div>
+    <div class="col"><small>Copyright &copy; Shop</small></div>
+    <div class="col"><small>{{ contact.phone|phone_format }}</small></div>
+  </div>
+</footer> {% endcomment %}
+
+<footer class="footer {{ fixed }} py-3 bg-dark">
+  <div class="container-fluid row text-center text-white">
+    <div class="col"><small>{{ address }}. {{ phone|phone_format }}</small></div>
+    <div class="col"><small>Copyright &copy; Shop</small></div>
+    <div class="col"><small><a href="#" data-toggle="modal" data-target="#contact-us">Contact Us</a></small></div>
+  </div>
+</footer>

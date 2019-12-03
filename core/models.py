@@ -52,3 +52,23 @@ class Comment(models.Model):
         self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
 
+
+class Contact(models.Model):
+    address = models.CharField(max_length=255)
+    phone = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name_plural = 'контакты'
+
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=128)
+    email = models.EmailField()
+    phone = models.IntegerField(null=True)
+    comment = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Обратная связь'
+
+    def __str__(self):
+        return self.email

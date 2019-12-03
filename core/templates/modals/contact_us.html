@@ -1,0 +1,24 @@
+<div class="modal" id="contact-us">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <form class="form" action="{% url 'core:contactus' %}" method="POST">
+            {% csrf_token %}
+            <div class="modal-header">
+                <h4 class="modal-title">Contact Us</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <input name="email" type="text" class="form-control" placeholder="Email" autofocus required>
+                <input name="phone" type="text" class="form-control" placeholder="Телефон" required>
+                <input name="name" type="text" class="form-control" placeholder="Имя" required>
+                <input name="comment" type="text" class="form-control" placeholder="Комментарий">
+            </div>
+
+            <div class="modal-footer btn-block">
+                <button type="submit" class="btn btn-outline-success btn-block">Отправить</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
